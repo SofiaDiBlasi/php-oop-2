@@ -1,10 +1,17 @@
 <?php  
+
+    include "./traits/Peso";
+    include "./traits/Cibo";
     Class Prodotto{
+        
+        use Peso;
+        use Cibo;
         public $nome;
         public $prezzo;
         public $immagine;
         public $tipologia;
         public $categoria;
+
 
         public function __construct($nome,$prezzo,$immagine,Tipologia $tipologia,Categoria $categoria){
             $this->nome = $nome;

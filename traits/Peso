@@ -1,0 +1,17 @@
+<?php 
+
+trait Peso{
+	private $peso;
+
+	public function getPeso() {
+		return $this->peso;
+	}
+
+	public function setPeso($peso, $unit = "kg") {
+        if ($peso == 100){
+            throw new Exception("Peso non valido !");
+        }
+		$this->peso = "$peso $unit";
+	}
+}
+?>

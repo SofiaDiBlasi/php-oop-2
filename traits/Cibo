@@ -1,0 +1,15 @@
+<?php 
+
+trait Cibo {
+	private $Commestibile;
+
+	public function getCommestibile() {
+		return $this->Commestibile ? "SI" : "NO";
+	}
+
+	public function setCommestibile($Commestibile) {
+		$this->Commestibile = $Commestibile ? true : false;
+	}
+}
+
+?>

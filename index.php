@@ -3,6 +3,10 @@
     include "./Categoria.php";
     include "./Prodotto.php";
 
+    try{
+
+    
+
     $cane = new Categoria("Cane","https://images.emojiterra.com/google/android-pie/512px/1f415.png");
     $gatto = new Categoria("Gatto","https://images.emojiterra.com/twitter/v13.1/512px/1f408.png");
 
@@ -10,10 +14,19 @@
     $gioco = new Tipologia("Giochi");
     $cuccia = new Tipologia("Cucce");
 
-    $prodotto1 = new Prodotto("Statoletta gourmet tonno", "6,99£" , "https://www.animalhouseitalia.it/16118-large_default/gourmet-gold-85-gr-delizie-in-salsa-tonno-cibo-umido-per-gatto.jpg" , $cibo,  $gatto);
-    $prodotto2 = new Prodotto("Statoletta gourmet tonno", "6,99£" , "https://www.animalhouseitalia.it/16118-large_default/gourmet-gold-85-gr-delizie-in-salsa-tonno-cibo-umido-per-gatto.jpg" , $cibo,  $gatto);
+
+    $prodotto1 = new Prodotto("Scatoletta gourmet tonno", "6,99£" , "https://www.animalhouseitalia.it/16118-large_default/gourmet-gold-85-gr-delizie-in-salsa-tonno-cibo-umido-per-gatto.jpg" , $cibo,  $gatto );
+    $prodotto2 = new Prodotto("Scatoletta gourmet pollo", "9,99£" , "https://www.animalhouseitalia.it/16118-large_default/gourmet-gold-85-gr-delizie-in-salsa-tonno-cibo-umido-per-gatto.jpg" , $cibo,  $gatto );
     
+    $prodotto1->setPeso(200 , "gr");
+
+    $prodotto2->setCommestibile(true);
+
     $listaProdotti = [$prodotto1,$prodotto2]; 
+
+    }catch(Exception $e){
+        echo "Eccezione: " + $e->getMessage();
+    }
     
 ?>
 
@@ -48,6 +61,12 @@
                             <p><?php echo $prodotto->getTipologia()->getName(); ?></p>
                             <p><?php echo $prodotto->getNome(); ?></p>
                             <p><?php echo $prodotto->getPrezzo(); ?></p>
+                            <?php if($prodotto-> getPeso() != null){ ?>
+                                <p>Peso: <?= $prodotto->getPeso() ?></p>
+                            <?php } ?>
+                            <?php if($prodotto-> getCommestibile() != null ){ ?>
+                                <p>Commestibile: <?= $prodotto->getCommestibile() ?></p>
+                            <?php } ?>
                         </div>
                         <div class="col-6">
                             <img src="<?php echo $prodotto->getImmagine(); ?>" alt="">
